@@ -8,6 +8,7 @@ Shortname: mimeapi
 Abstract: The MIME API Standard defines an API for interacting with MIME Types.
 <!-- Translation: -->
 Status: DREAM
+!Issues: <a href="https://github.com/bmeck/node-proposal-mime-api/issues">https://github.com/bmeck/node-proposal-mime-api/issues</a>
 </pre>
 
 
