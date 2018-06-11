@@ -1212,7 +1212,7 @@ Possible extra rowspan handling
 	}
 </style>
   <meta content="Bikeshed version 60c7cf64c0efdd39a8c0261dfad14adb1da62902" name="generator">
-  <meta content="6ef5c8673ae8e666057c94c9e44556cf82eafa09" name="document-revision">
+  <meta content="930749f288772e002bb26ed27881864b9cc7780c" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1459,7 +1459,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref allcaps" id="title">MIME API</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">A Collection of Interesting Ideas, <time class="dt-updated" datetime="2018-06-07">7 June 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">A Collection of Interesting Ideas, <time class="dt-updated" datetime="2018-06-11">11 June 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt class="editor">Editor:
@@ -1471,7 +1471,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 7 June 2018,
+In addition, as of 11 June 2018,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 Parts of this work may be from another specification document.  If so, those parts are instead covered by the license of that specification document. </p>
@@ -1544,6 +1544,8 @@ Parts of this work may be from another specification document.  If so, those par
    <p>To <dfn data-dfn-for="mime" data-dfn-type="dfn" data-export="" id="set-a-parameter">set a parameter<a class="self-link" href="#set-a-parameter"></a></dfn> given a <var>parameters</var>, <var>name</var>, and <var>value</var>, run these steps: </p>
    <ol>
     <li>
+     <p>Remove any leading <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-whitespace" id="ref-for-ascii-whitespace②">ASCII whitespace</a> from <var>name</var> </p>
+    <li>
      <p>If <var>name</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror②">TypeError</a></code>. </p>
     <li>
      <p>If <var>value</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP quoted-string token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror③">TypeError</a></code>. </p>
@@ -1562,7 +1564,7 @@ Parts of this work may be from another specification document.  If so, those par
   <dfn class="kt" data-dfn-for="MIME" data-dfn-type="dfn" data-lt="stringification behavior" data-noexport="" id="MIME-stringification-behavior">stringifier<a class="self-link" href="#MIME-stringification-behavior"></a></dfn> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString③"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIME" data-dfn-type="stringifier" data-export="" data-lt="toJSON()" id="dom-mime-tojson"><code>toJSON</code><a class="self-link" href="#dom-mime-tojson"></a></dfn>();
 };
 </pre>
-   <p>A <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime①">MIME</a></code> object has an associated <dfn class="dfn-paneled" data-dfn-for="MIME" data-dfn-type="dfn" data-noexport="" id="concept-mimesniff-mime">mime</dfn> (a <a data-link-type="dfn">MIME</a>) and <dfn class="dfn-paneled" data-dfn-for="MIME" data-dfn-type="dfn" data-noexport="" id="concept-mimesniff-parameters-object">parameters object</dfn> (a <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams①">MIMEParams</a></code> object). </p>
+   <p>A <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime①">MIME</a></code> object has an associated <a data-link-type="dfn">mime</a> (a <a data-link-type="dfn">MIME</a>) and <a a="mimesniff" data-link-type="dfn">parameters</a> (a <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams①">MIMEParams</a></code> object). </p>
    <hr>
    <p id="constructors">The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="constructor" data-export="" id="dom-mime-mime"><code>MIME(<var>mime</var>)</code></dfn> constructor, when invoked, must run these steps: </p>
    <ol>
@@ -1577,9 +1579,9 @@ Parts of this work may be from another specification document.  If so, those par
     <li>
      <p>Let <var>result</var> be a new <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime②">MIME</a></code> object. </p>
     <li>
-     <p>Set <var>result</var>’s <a data-link-type="dfn" href="#concept-mimesniff-mime" id="ref-for-concept-mimesniff-mime">mime</a> to <var>mimeType</var>. </p>
+     <p>Set <var>result</var>’s <a data-link-type="dfn">mime</a> to <var>mimeType</var>. </p>
     <li>
-     <p>Set <var>result</var>’s <a data-link-type="dfn" href="#concept-mimesniff-parameters-object" id="ref-for-concept-mimesniff-parameters-object">parameters object</a> to a <a data-link-type="dfn" href="#concept-mimeparams-new" id="ref-for-concept-mimeparams-new">new</a> <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams②">MIMEParams</a></code>, and then set that <a data-link-type="dfn" href="#concept-mimesniff-parameters-object" id="ref-for-concept-mimesniff-parameters-object①">parameters object</a>’s <a data-link-type="dfn">parameters object</a> to <var>params</var>. </p>
+     <p>Set <var>result</var>’s <a data-link-type="dfn">parameters object</a> to a <a data-link-type="dfn" href="#concept-mimeparams-new" id="ref-for-concept-mimeparams-new">new</a> <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams②">MIMEParams</a></code>, and then set that <a data-link-type="dfn">parameters object</a>’s <a data-link-type="dfn">parameters object</a> to <var>params</var>. </p>
     <li>
      <p>Return <var>result</var>. </p>
    </ol>
@@ -1600,18 +1602,18 @@ mime<span class="p">.</span>subtype <span class="c1">// "javascript"</span></cod
 mime<span class="p">.</span>type <span class="c1">// "text"</span></code></pre>
    </div>
    <hr id="mimeutils-members">
-   <p>The <dfn class="idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" id="dom-mime-href"><code>href</code><a class="self-link" href="#dom-mime-href"></a></dfn> attribute’s getter and the <dfn class="idl-code" data-dfn-for="/" data-dfn-type="method" data-export="" id="dom---tojson"><code>toJSON()</code><a class="self-link" href="#dom---tojson"></a></dfn> method, when invoked, must return the <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#serialize-a-mime-type" id="ref-for-serialize-a-mime-type">serialize a mime type</a> algorithm on <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object">context object</a>’s <a data-link-type="dfn" href="#concept-mimesniff-mime" id="ref-for-concept-mimesniff-mime①">mime</a>. </p>
+   <p>The <dfn class="idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" id="dom-mime-href"><code>href</code><a class="self-link" href="#dom-mime-href"></a></dfn> attribute’s getter and the <dfn class="idl-code" data-dfn-for="/" data-dfn-type="method" data-export="" id="dom---tojson"><code>toJSON()</code><a class="self-link" href="#dom---tojson"></a></dfn> method, when invoked, must return the <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#serialize-a-mime-type" id="ref-for-serialize-a-mime-type">serialize a mime type</a> algorithm on <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object">context object</a>’s <a data-link-type="dfn">mime</a>. </p>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" id="dom-mime-type"><code>type</code></dfn> attribute’s getter must run these steps: </p>
    <ol>
     <li>
-     <p>Return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object①">context object</a>’s <a data-link-type="dfn" href="#concept-mimesniff-mime" id="ref-for-concept-mimesniff-mime②">mime</a>’s <a data-link-type="dfn">type</a>. </p>
+     <p>Return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object①">context object</a>’s <a data-link-type="dfn">mime</a>’s <a data-link-type="dfn">type</a>. </p>
    </ol>
    <p>The <code><a class="idl-code" data-link-type="attribute" href="#dom-mime-type" id="ref-for-dom-mime-type①">type</a></code> attribute’s setter must run these steps: </p>
    <ol>
     <li>
-     <p><a data-link-type="dfn" href="#set-the-type" id="ref-for-set-the-type">Set the type</a> given <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object②">context object</a>’s <a data-link-type="dfn" href="#concept-mimesniff-mime" id="ref-for-concept-mimesniff-mime③">mime</a> and the given value. </p>
+     <p><a data-link-type="dfn" href="#set-the-type" id="ref-for-set-the-type">Set the type</a> given <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object②">context object</a>’s <a data-link-type="dfn">mime</a> and the given value. </p>
    </ol>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" id="dom-mime-mimeparams"><code>mimeParams</code></dfn> attribute’s getter must return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object③">context object</a>’s <a data-link-type="dfn" href="#concept-mimesniff-parameters-object" id="ref-for-concept-mimesniff-parameters-object②">parameters object</a>. </p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" id="dom-mime-mimeparams"><code>mimeParams</code></dfn> attribute’s getter must return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object③">context object</a>’s <a data-link-type="dfn">parameters object</a>. </p>
    <h3 class="heading settled" data-level="2.2" id="interface-mimeparams"><span class="secno">2.2. </span><span class="content">MIMEParams class</span><a class="self-link" href="#interface-mimeparams"></a></h3>
 <pre class="idl highlight def">[<a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①">Exposed</a>=(<span class="n">Window</span>,<span class="n">Worker</span>)]
 <span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="mimeparams"><code>MIMEParams</code></dfn> {
@@ -1818,13 +1820,11 @@ Bradley Farias
    <li><a href="#dom-mimeparams-has">has(name)</a><span>, in §2.2</span>
    <li><a href="#dom-mime-href">href</a><span>, in §2.1</span>
    <li><a href="#mime">MIME</a><span>, in §2.1</span>
-   <li><a href="#concept-mimesniff-mime">mime</a><span>, in §2.1</span>
    <li><a href="#dom-mime-mime">MIME(mime)</a><span>, in §2.1</span>
    <li><a href="#dom-mime-mimeparams">mimeParams</a><span>, in §2.1</span>
    <li><a href="#mimeparams">MIMEParams</a><span>, in §2.2</span>
    <li><a href="#concept-mimeparams-new">new</a><span>, in §2.2</span>
    <li><a href="#mimeparams-parameters">parameters</a><span>, in §2.2</span>
-   <li><a href="#concept-mimesniff-parameters-object">parameters object</a><span>, in §2.1</span>
    <li><a href="#set-a-parameter">set a parameter</a><span>, in §1</span>
    <li><a href="#dom-mimeparams-set">set(name, value)</a><span>, in §2.2</span>
    <li><a href="#set-the-subtype">set the subtype</a><span>, in §1</span>
@@ -1860,7 +1860,7 @@ Bradley Farias
   <aside class="dfn-panel" data-for="term-for-ascii-whitespace">
    <a href="https://infra.spec.whatwg.org/#ascii-whitespace">https://infra.spec.whatwg.org/#ascii-whitespace</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-ascii-whitespace">1. Infrastructure</a> <a href="#ref-for-ascii-whitespace①">(2)</a>
+    <li><a href="#ref-for-ascii-whitespace">1. Infrastructure</a> <a href="#ref-for-ascii-whitespace①">(2)</a> <a href="#ref-for-ascii-whitespace②">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-parse-a-mime-type">
@@ -2002,18 +2002,6 @@ Bradley Farias
     <li><a href="#ref-for-mime">Goals</a>
     <li><a href="#ref-for-mime①">2.1. MIME class</a> <a href="#ref-for-mime②">(2)</a> <a href="#ref-for-mime③">(3)</a> <a href="#ref-for-mime④">(4)</a> <a href="#ref-for-mime⑤">(5)</a>
     <li><a href="#ref-for-mime⑥">2.3. MIME APIs elsewhere</a> <a href="#ref-for-mime⑦">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="concept-mimesniff-mime">
-   <b><a href="#concept-mimesniff-mime">#concept-mimesniff-mime</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-mimesniff-mime">2.1. MIME class</a> <a href="#ref-for-concept-mimesniff-mime①">(2)</a> <a href="#ref-for-concept-mimesniff-mime②">(3)</a> <a href="#ref-for-concept-mimesniff-mime③">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="concept-mimesniff-parameters-object">
-   <b><a href="#concept-mimesniff-parameters-object">#concept-mimesniff-parameters-object</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-mimesniff-parameters-object">2.1. MIME class</a> <a href="#ref-for-concept-mimesniff-parameters-object①">(2)</a> <a href="#ref-for-concept-mimesniff-parameters-object②">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-mime-mime">
