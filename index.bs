@@ -40,7 +40,7 @@ might increase in scope somewhat.-->
   <var>type</var>, run these steps:
   
 <ol>
-  <li><p>If <var>type</var> is empty or does not consist entirely of <a>HTTP token code points</a>, throw a {{TypeError}}.
+  <li><p>If <var>type</var> is empty or does not consist entirely of <a spec="mimesniff">HTTP token code points</a>, throw a {{TypeError}}.
 
   <li><p>Set <var>type</var> to <var>type</var>, in <a>ASCII lowercase</a>.
 
@@ -51,7 +51,7 @@ might increase in scope somewhat.-->
   <var>subtype</var>, run these steps:
   
 <ol>
-  <li><p>If <var>subtype</var> is empty or does not consist entirely of <a>HTTP token code points</a>, throw a {{TypeError}}.
+  <li><p>If <var>subtype</var> is empty or does not consist entirely of <a spec="mimesniff">HTTP token code points</a>, throw a {{TypeError}}.
 
   <li><p>Set <var>subtype</var> to <var>subtype</var>, in <a>ASCII lowercase</a>.
 
@@ -62,9 +62,9 @@ might increase in scope somewhat.-->
   <var>value</var>, run these steps:
   
 <ol>
-  <li><p>If <var>name</var> is empty or does not consist entirely of <a>HTTP token code points</a>, throw a {{TypeError}}.
+  <li><p>If <var>name</var> is empty or does not consist entirely of <a spec="mimesniff">HTTP token code points</a>, throw a {{TypeError}}.
 
-  <li><p>If <var>value</var> is empty or does not consist entirely of <a>HTTP quoted-string token code points</a>, throw a {{TypeError}}.
+  <li><p>If <var>value</var> is empty or does not consist entirely of <a spec="mimesniff">HTTP quoted-string token code points</a>, throw a {{TypeError}}.
 
   <li><p>Set <var>name</var> to <var>name</var>, in <a>ASCII lowercase</a>.
 

@@ -1526,7 +1526,7 @@ Parts of this work may be from another specification document.  If so, those par
    <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="set-the-type">set the type</dfn> given a <var>mime</var> and <var>type</var>, run these steps: </p>
    <ol>
     <li>
-     <p>If <var>type</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror">TypeError</a></code>. </p>
+     <p>If <var>type</var> is empty or does not consist entirely of <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#http-token-code-point" id="ref-for-http-token-code-point">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror">TypeError</a></code>. </p>
     <li>
      <p>Set <var>type</var> to <var>type</var>, in <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-lowercase" id="ref-for-ascii-lowercase">ASCII lowercase</a>. </p>
     <li>
@@ -1535,7 +1535,7 @@ Parts of this work may be from another specification document.  If so, those par
    <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="set-the-subtype">set the subtype</dfn> given a <var>mime</var> and <var>subtype</var>, run these steps: </p>
    <ol>
     <li>
-     <p>If <var>subtype</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror①">TypeError</a></code>. </p>
+     <p>If <var>subtype</var> is empty or does not consist entirely of <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#http-token-code-point" id="ref-for-http-token-code-point①">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror①">TypeError</a></code>. </p>
     <li>
      <p>Set <var>subtype</var> to <var>subtype</var>, in <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-lowercase" id="ref-for-ascii-lowercase①">ASCII lowercase</a>. </p>
     <li>
@@ -1544,9 +1544,9 @@ Parts of this work may be from another specification document.  If so, those par
    <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="set-a-parameter">set a parameter</dfn> given a <var>parameters</var>, <var>name</var>, and <var>value</var>, run these steps: </p>
    <ol>
     <li>
-     <p>If <var>name</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror②">TypeError</a></code>. </p>
+     <p>If <var>name</var> is empty or does not consist entirely of <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#http-token-code-point" id="ref-for-http-token-code-point②">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror②">TypeError</a></code>. </p>
     <li>
-     <p>If <var>value</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP quoted-string token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror③">TypeError</a></code>. </p>
+     <p>If <var>value</var> is empty or does not consist entirely of <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#http-quoted-string-token-code-point" id="ref-for-http-quoted-string-token-code-point">HTTP quoted-string token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror③">TypeError</a></code>. </p>
     <li>
      <p>Set <var>name</var> to <var>name</var>, in <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-lowercase" id="ref-for-ascii-lowercase②">ASCII lowercase</a>. </p>
     <li>
@@ -1879,6 +1879,18 @@ Bradley Farias
     <li><a href="#ref-for-ascii-lowercase">1. Infrastructure</a> <a href="#ref-for-ascii-lowercase①">(2)</a> <a href="#ref-for-ascii-lowercase②">(3)</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-http-quoted-string-token-code-point">
+   <a href="https://mimesniff.spec.whatwg.org/#http-quoted-string-token-code-point">https://mimesniff.spec.whatwg.org/#http-quoted-string-token-code-point</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-http-quoted-string-token-code-point">1. Infrastructure</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-http-token-code-point">
+   <a href="https://mimesniff.spec.whatwg.org/#http-token-code-point">https://mimesniff.spec.whatwg.org/#http-token-code-point</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-http-token-code-point">1. Infrastructure</a> <a href="#ref-for-http-token-code-point①">(2)</a> <a href="#ref-for-http-token-code-point②">(3)</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-mime-type">
    <a href="https://mimesniff.spec.whatwg.org/#mime-type">https://mimesniff.spec.whatwg.org/#mime-type</a><b>Referenced in:</b>
    <ul>
@@ -1979,6 +1991,8 @@ Bradley Farias
    <li>
     <a data-link-type="biblio">[MIMESNIFF]</a> defines the following terms:
     <ul>
+     <li><span class="dfn-paneled" id="term-for-http-quoted-string-token-code-point" style="color:initial">http quoted-string token code point</span>
+     <li><span class="dfn-paneled" id="term-for-http-token-code-point" style="color:initial">http token code point</span>
      <li><span class="dfn-paneled" id="term-for-mime-type" style="color:initial">mime type</span>
      <li><span class="dfn-paneled" id="term-for-parameters" style="color:initial">parameters</span>
      <li><span class="dfn-paneled" id="term-for-parse-a-mime-type" style="color:initial">parse a mime type</span>
