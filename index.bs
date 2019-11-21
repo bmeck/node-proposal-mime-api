@@ -36,37 +36,37 @@ might increase in scope somewhat.-->
  <li>Mime Sniffing [[!MIMESNIFF]]
 </ul>
 
-<p>To <dfn export id=set-the-type for=mime>set the type</dfn> given a <var>mime</var> and
+<p>To <dfn>set the type</dfn> given a <var>mime</var> and
   <var>type</var>, run these steps:
   
 <ol>
-  <li><p>Remove any leading <a>ASCII whitespace</a> from <var>type</var>
+  <li><p>If <var>type</var> is empty or does not consist entirely of <a>HTTP token code points</a>, throw a {{TypeError}}.
 
-  <li><p>If <var>type</var> is empty or does not consist entirely of <a>HTTP token code point</a>s, throw a {{TypeError}}.
+  <li><p>Set <var>type</var> to <var>type</var>, in <a>ASCII lowercase</a>.
 
   <li><p>Set <var>mime</var>'s type to the value of <var>type</var>.
 </ol>
 
-<p>To <dfn export id=set-the-subtype for=mime>set the subtype</dfn> given a <var>mime</var> and
+<p>To <dfn>set the subtype</dfn> given a <var>mime</var> and
   <var>subtype</var>, run these steps:
   
 <ol>
-  <li><p>Remove any trailing <a>ASCII whitespace</a> from <var>subtype</var>
+  <li><p>If <var>subtype</var> is empty or does not consist entirely of <a>HTTP token code points</a>, throw a {{TypeError}}.
 
-  <li><p>If <var>subtype</var> is empty or does not consist entirely of <a>HTTP token code point</a>s, throw a {{TypeError}}.
+  <li><p>Set <var>subtype</var> to <var>subtype</var>, in <a>ASCII lowercase</a>.
 
   <li><p>Set <var>mime</var>'s subtype to the value of <var>subtype</var>.
 </ol>
 
-<p>To <dfn export id=set-a-parameter for=mime>set a parameter</dfn> given a <var>parameters</var>, <var>name</var>, and
+<p>To <dfn>set a parameter</dfn> given a <var>parameters</var>, <var>name</var>, and
   <var>value</var>, run these steps:
   
 <ol>
-  <li><p>Remove any leading <a>ASCII whitespace</a> from <var>name</var>
-
   <li><p>If <var>name</var> is empty or does not consist entirely of <a>HTTP token code points</a>, throw a {{TypeError}}.
 
   <li><p>If <var>value</var> is empty or does not consist entirely of <a>HTTP quoted-string token code points</a>, throw a {{TypeError}}.
+
+  <li><p>Set <var>name</var> to <var>name</var>, in <a>ASCII lowercase</a>.
 
   <li><p>Set <var>parameters</var>' property whose name is <var>name</var> to the value of <var>value</var>.
 </ol>
@@ -82,15 +82,14 @@ might increase in scope somewhat.-->
 interface MIME {
            attribute USVString type;
            attribute USVString subtype;
-  [SameObject] readonly attribute MIMEParams mimeParams;
+  [SameObject] readonly attribute MIMEParams params;
 
   stringifier USVString toJSON();
 };
 </pre>
 
-<p>A {{MIME}} object has an associated <a lt=mimesniff>mime</a> (a
-<a for=/>MIME</a>) and <a lt=mimesniff#parameters>parameters</a> (a
-{{MIMEParams}} object).
+<p>A {{MIME}} object has an associated <dfn export for="MIME">mime</dfn> that is a <a>MIME type</a> and <dfn export for="MIME">parameters</dfn> that is a
+{{MIMEParams}} object.
 
 <hr>
 
@@ -104,21 +103,21 @@ interface MIME {
 
  <li><p>If <var>mimeType</var> is failure, then <a>throw</a> a {{TypeError}}.
 
- <li><p>Let <var>params</var> be <var>mimeType</var>'s <a for=mimesniff>parameters</a>.
+ <li><p>Let <var>params</var> be <var>mimeType</var>'s <a for="MIME type">parameters</a>.
 
  <li><p>Let <var>result</var> be a new {{MIME}} object.
 
  <li><p>Set <var>result</var>'s <a for=MIME>mime</a> to <var>mimeType</var>.
 
- <li><p>Set <var>result</var>'s <a for=MIME>parameters object</a> to a <a for=MIMEParams>new</a>
- {{MIMEParams}}, and then set that <a for=MIME>parameters object</a>'s
- <a for=MIMEParams>parameters object</a> to <var>params</var>.
+ <li><p>Set <var>result</var>'s <a for=MIME lt="parameters">parameters object</a> to a
+ <a for=MIMEParams lt=new>new MIMEParams</a>, and then set that <a for=MIME lt="parameters">parameters object</a>'s
+ <a for=MIMEParams lt="parameters">parameters object</a> to <var>params</var>.
 
  <li><p>Return <var>result</var>.
 </ol>
 
-<div class="example no-backref" id=example-5434421b>
- <p>To <a lt="">parse</a> a string into a <a for=/>MIME</a>, invoke the {{MIME}} constructor with a single argument:
+<div class="example no-backref">
+ <p>To <a lt="">parse</a> a string into a <a>MIME</a>, invoke the {{MIME}} constructor with a single argument:
 
  <pre><code class="lang-javascript">
 var input = "text/javascript; charset=utf-8;",
@@ -145,23 +144,35 @@ mime.type // "text"</code></pre>
 <hr id=mimeutils-members>
 
 <p>The <dfn attribute for=MIME><code>href</code></dfn> attribute's getter and the
-<dfn method for=/><code>toJSON()</code></dfn> method, when invoked, must return the
+<dfn method for="MIME"><code>toJSON()</code></dfn> method, when invoked, must return the
 <a>serialize a mime type</a> algorithm on <a>context object</a>'s <a for=MIME>mime</a>.
 
 <p>The <dfn attribute for=MIME><code>type</code></dfn> attribute's getter must run these steps:
 
   <ol>
-    <li><p>Return <a>context object</a>'s <a for=MIME>mime</a>'s <a for=mime>type</a>.
+    <li><p>Return <a>context object</a>'s <a for=MIME>mime</a>'s <a for="MIME type">type</a>.
   </ol>
 
 <p>The <code><a attribute for=MIME>type</a></code> attribute's setter must run these steps:
 
 <ol>
- <li><p><a for=mime>Set the type</a> given <a>context object</a>'s <a for=MIME>mime</a> and the given value.
+ <li><p><a>set the type</a> given <a>context object</a>'s <a for=MIME>mime</a> and the given value.
 </ol>
 
-<p>The <dfn attribute for=MIME><code>mimeParams</code></dfn> attribute's getter must return
-<a>context object</a>'s <a for=MIME>parameters object</a>.
+<p>The <dfn attribute for=MIME><code>subtype</code></dfn> attribute's getter must run these steps:
+
+  <ol>
+    <li><p>Return <a>context object</a>'s <a for=MIME>mime</a>'s <a for="MIME type">subtype</a>.
+  </ol>
+
+<p>The <code><a attribute for=MIME>subtype</a></code> attribute's setter must run these steps:
+
+<ol>
+ <li><p><a>set the subtype</a> given <a>context object</a>'s <a for=MIME>mime</a> and the given value.
+</ol>
+
+<p>The <dfn attribute for=MIME><code>params</code></dfn> attribute's getter must return
+<a>context object</a>'s <a for=MIME lt="parameters">parameters object</a>.
 
 <h3 id=interface-mimeparams>MIMEParams class</h3>
 
@@ -178,7 +189,7 @@ interface MIMEParams {
 </pre>
 
 <p>A {{MIMEParams}} object has an associated
-<a for=mimesniff>parameters</a> object <dfn for=MIMEParams>parameters</dfn>,
+<a for="MIME type">parameters</a> object <dfn for=MIMEParams>parameters</dfn>,
 which is initially null.
 
 <p>To create a <dfn export for=MIMEParams id=concept-mimeparams-new>new</dfn>
@@ -187,7 +198,7 @@ which is initially null.
 <ol>
  <li><p>Let <var>params</var> be a new {{MIMEParams}} object.
 
- <li><p>If <var>init</var> is not a mime record's <a for=mimesniff>parameters</a> object, then <a>throw</a> a {{TypeError}}.
+ <li><p>If <var>init</var> is not a mime record's <a for="MIME type">parameters</a> object, then <a>throw</a> a {{TypeError}}.
 
  <li><p>Return <var>params</var>.
 </ol>
@@ -214,15 +225,15 @@ in <a for=MIMEParams>parameters</a>, and false otherwise.
 
 <p>The
 <dfn method for=MIMEParams><code>set(<var>name</var>, <var>value</var>)</code></dfn>
-method, when invoked, must return the result of <a for=MIMEParams>setting a parameter</a> given <a>parameters</a>, <var>name</var>, and <var>value</var>
+method, when invoked, must return the result of performing <a>set a parameter</a> given <a for="MIME type">parameters</a>, <var>name</var>, and <var>value</var>
 
 <hr>
 
 <h3 id=mime-apis-elsewhere>MIME APIs elsewhere</h3>
 
-<p>A standard that exposes <a for=/>MIMEs</a>, should expose the <a for=/>MIME</a> as a string (by
-running <a>serialize a mime type</a> for an internal <a for=/>MIME</a>'s mime). A standard should not expose a
-<a for=/>MIME</a> using a {{MIME}} object. {{MIME}} objects are meant for <a for=/>MIME</a>
+<p>A standard that exposes <a lt="MIME">MIMEs</a>, should expose the <a>MIME</a> as a string (by
+running <a>serialize a mime type</a> for an internal <a lt="MIME">MIME's</a> mime). A standard should not expose a
+<a>MIME</a> using a {{MIME}} object. {{MIME}} objects are meant for <a>MIME</a>
 manipulation. In IDL the USVString type should be used.
 
 <p class=note>The higher-level notion here is that values are to be exposed as immutable data

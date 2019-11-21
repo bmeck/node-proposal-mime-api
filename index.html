@@ -1029,7 +1029,7 @@ Possible extra rowspan handling
 		}
 	/* } */
 
-	@supports (display:grid) {
+	@supports (display:grid) and (display:contents) {
 		/* Use #toc over .toc to override non-@supports rules. */
 		#toc {
 			display: grid;
@@ -1058,9 +1058,10 @@ Possible extra rowspan handling
 			   comprising the first items of each top-level section. */
 			margin-top: 1.1rem;
 		}
-		#toc .secno {
+		#toc#toc .secno { /* Ugh, need more specificity to override base.css */
 			grid-column: 1;
 			width: auto;
+			margin-left: 0;
 		}
 		#toc .content {
 			grid-column: 2;
@@ -1211,8 +1212,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 60c7cf64c0efdd39a8c0261dfad14adb1da62902" name="generator">
-  <meta content="930749f288772e002bb26ed27881864b9cc7780c" name="document-revision">
+  <meta content="Bikeshed version 83d3ceadc5400c8422976bbcbe49615aace9cf1e" name="generator">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1402,64 +1402,64 @@ pre.idl.highlight { color: #708090; }
 .highlight:not(.idl) { background: hsl(24, 20%, 95%); }
 code.highlight { padding: .1em; border-radius: .3em; }
 pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
-.highlight .c { color: #708090 } /* Comment */
-.highlight .k { color: #990055 } /* Keyword */
-.highlight .l { color: #000000 } /* Literal */
-.highlight .n { color: #0077aa } /* Name */
-.highlight .o { color: #999999 } /* Operator */
-.highlight .p { color: #999999 } /* Punctuation */
-.highlight .cm { color: #708090 } /* Comment.Multiline */
-.highlight .cp { color: #708090 } /* Comment.Preproc */
-.highlight .c1 { color: #708090 } /* Comment.Single */
-.highlight .cs { color: #708090 } /* Comment.Special */
-.highlight .kc { color: #990055 } /* Keyword.Constant */
-.highlight .kd { color: #990055 } /* Keyword.Declaration */
-.highlight .kn { color: #990055 } /* Keyword.Namespace */
-.highlight .kp { color: #990055 } /* Keyword.Pseudo */
-.highlight .kr { color: #990055 } /* Keyword.Reserved */
-.highlight .kt { color: #990055 } /* Keyword.Type */
-.highlight .ld { color: #000000 } /* Literal.Date */
-.highlight .m { color: #000000 } /* Literal.Number */
-.highlight .s { color: #a67f59 } /* Literal.String */
-.highlight .na { color: #0077aa } /* Name.Attribute */
-.highlight .nc { color: #0077aa } /* Name.Class */
-.highlight .no { color: #0077aa } /* Name.Constant */
-.highlight .nd { color: #0077aa } /* Name.Decorator */
-.highlight .ni { color: #0077aa } /* Name.Entity */
-.highlight .ne { color: #0077aa } /* Name.Exception */
-.highlight .nf { color: #0077aa } /* Name.Function */
-.highlight .nl { color: #0077aa } /* Name.Label */
-.highlight .nn { color: #0077aa } /* Name.Namespace */
-.highlight .py { color: #0077aa } /* Name.Property */
-.highlight .nt { color: #669900 } /* Name.Tag */
-.highlight .nv { color: #222222 } /* Name.Variable */
-.highlight .ow { color: #999999 } /* Operator.Word */
-.highlight .mb { color: #000000 } /* Literal.Number.Bin */
-.highlight .mf { color: #000000 } /* Literal.Number.Float */
-.highlight .mh { color: #000000 } /* Literal.Number.Hex */
-.highlight .mi { color: #000000 } /* Literal.Number.Integer */
-.highlight .mo { color: #000000 } /* Literal.Number.Oct */
-.highlight .sb { color: #a67f59 } /* Literal.String.Backtick */
-.highlight .sc { color: #a67f59 } /* Literal.String.Char */
-.highlight .sd { color: #a67f59 } /* Literal.String.Doc */
-.highlight .s2 { color: #a67f59 } /* Literal.String.Double */
-.highlight .se { color: #a67f59 } /* Literal.String.Escape */
-.highlight .sh { color: #a67f59 } /* Literal.String.Heredoc */
-.highlight .si { color: #a67f59 } /* Literal.String.Interpol */
-.highlight .sx { color: #a67f59 } /* Literal.String.Other */
-.highlight .sr { color: #a67f59 } /* Literal.String.Regex */
-.highlight .s1 { color: #a67f59 } /* Literal.String.Single */
-.highlight .ss { color: #a67f59 } /* Literal.String.Symbol */
-.highlight .vc { color: #0077aa } /* Name.Variable.Class */
-.highlight .vg { color: #0077aa } /* Name.Variable.Global */
-.highlight .vi { color: #0077aa } /* Name.Variable.Instance */
-.highlight .il { color: #000000 } /* Literal.Number.Integer.Long */
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"></p>
    <h1 class="p-name no-ref allcaps" id="title">MIME API</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">A Collection of Interesting Ideas, <time class="dt-updated" datetime="2018-06-11">11 June 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">A Collection of Interesting Ideas, <time class="dt-updated" datetime="2019-11-21">21 November 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt class="editor">Editor:
@@ -1471,7 +1471,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="http://creativecommons.org/publicdomain/zero/1.0/" rel="license"><img alt="CC0" src="https://licensebuttons.net/p/zero/1.0/80x15.png"></a> To the extent possible under law, the editors have waived all copyright
 and related or neighboring rights to this work.
-In addition, as of 11 June 2018,
+In addition, as of 21 November 2019,
 the editors have made this specification available under the <a href="http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0" rel="license">Open Web Foundation Agreement Version 1.0</a>,
 which is available at http://www.openwebfoundation.org/legal/the-owf-1-0-agreements/owfa-1-0.
 Parts of this work may be from another specification document.  If so, those parts are instead covered by the license of that specification document. </p>
@@ -1523,50 +1523,50 @@ Parts of this work may be from another specification document.  If so, those par
    <ul class="brief">
     <li>Mime Sniffing <a data-link-type="biblio" href="#biblio-mimesniff">[MIMESNIFF]</a> 
    </ul>
-   <p>To <dfn class="dfn-paneled" data-dfn-for="mime" data-dfn-type="dfn" data-export="" id="set-the-type">set the type</dfn> given a <var>mime</var> and <var>type</var>, run these steps: </p>
+   <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="set-the-type">set the type</dfn> given a <var>mime</var> and <var>type</var>, run these steps: </p>
    <ol>
     <li>
-     <p>Remove any leading <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-whitespace" id="ref-for-ascii-whitespace">ASCII whitespace</a> from <var>type</var> </p>
+     <p>If <var>type</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror">TypeError</a></code>. </p>
     <li>
-     <p>If <var>type</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code point</a>s, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror">TypeError</a></code>. </p>
+     <p>Set <var>type</var> to <var>type</var>, in <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-lowercase" id="ref-for-ascii-lowercase">ASCII lowercase</a>. </p>
     <li>
      <p>Set <var>mime</var>’s type to the value of <var>type</var>. </p>
    </ol>
-   <p>To <dfn data-dfn-for="mime" data-dfn-type="dfn" data-export="" id="set-the-subtype">set the subtype<a class="self-link" href="#set-the-subtype"></a></dfn> given a <var>mime</var> and <var>subtype</var>, run these steps: </p>
+   <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="set-the-subtype">set the subtype</dfn> given a <var>mime</var> and <var>subtype</var>, run these steps: </p>
    <ol>
     <li>
-     <p>Remove any trailing <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-whitespace" id="ref-for-ascii-whitespace①">ASCII whitespace</a> from <var>subtype</var> </p>
+     <p>If <var>subtype</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror①">TypeError</a></code>. </p>
     <li>
-     <p>If <var>subtype</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code point</a>s, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror①">TypeError</a></code>. </p>
+     <p>Set <var>subtype</var> to <var>subtype</var>, in <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-lowercase" id="ref-for-ascii-lowercase①">ASCII lowercase</a>. </p>
     <li>
      <p>Set <var>mime</var>’s subtype to the value of <var>subtype</var>. </p>
    </ol>
-   <p>To <dfn data-dfn-for="mime" data-dfn-type="dfn" data-export="" id="set-a-parameter">set a parameter<a class="self-link" href="#set-a-parameter"></a></dfn> given a <var>parameters</var>, <var>name</var>, and <var>value</var>, run these steps: </p>
+   <p>To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="set-a-parameter">set a parameter</dfn> given a <var>parameters</var>, <var>name</var>, and <var>value</var>, run these steps: </p>
    <ol>
-    <li>
-     <p>Remove any leading <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-whitespace" id="ref-for-ascii-whitespace②">ASCII whitespace</a> from <var>name</var> </p>
     <li>
      <p>If <var>name</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror②">TypeError</a></code>. </p>
     <li>
      <p>If <var>value</var> is empty or does not consist entirely of <a data-link-type="dfn">HTTP quoted-string token code points</a>, throw a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror③">TypeError</a></code>. </p>
     <li>
+     <p>Set <var>name</var> to <var>name</var>, in <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-lowercase" id="ref-for-ascii-lowercase②">ASCII lowercase</a>. </p>
+    <li>
      <p>Set <var>parameters</var>’ property whose name is <var>name</var> to the value of <var>value</var>. </p>
    </ol>
    <h2 class="heading settled" data-level="2" id="api"><span class="secno">2. </span><span class="content">API</span><a class="self-link" href="#api"></a></h2>
    <h3 class="heading settled" data-level="2.1" id="mime-class"><span class="secno">2.1. </span><span class="content">MIME class</span><a class="self-link" href="#mime-class"></a></h3>
-<pre class="idl highlight def">[<a class="nv idl-code" data-link-type="constructor" href="#dom-mime-mime" id="ref-for-dom-mime-mime">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIME/MIME(mime)" data-dfn-type="argument" data-export="" id="dom-mime-mime-mime-mime"><code>mime</code><a class="self-link" href="#dom-mime-mime-mime-mime"></a></dfn>),
- <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed">Exposed</a>=(<span class="n">Window</span>,<span class="n">Worker</span>)]
-<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="mime"><code>MIME</code></dfn> {
-           <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①"><span class="kt">USVString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="USVString" href="#dom-mime-type" id="ref-for-dom-mime-type">type</a>;
-           <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString②"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" data-type="USVString" id="dom-mime-subtype"><code>subtype</code><a class="self-link" href="#dom-mime-subtype"></a></dfn>;
-  [<a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject">SameObject</a>] <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#mimeparams" id="ref-for-mimeparams">MIMEParams</a> <a class="nv idl-code" data-link-type="attribute" data-readonly="" data-type="MIMEParams" href="#dom-mime-mimeparams" id="ref-for-dom-mime-mimeparams">mimeParams</a>;
+<pre class="idl highlight def">[<a class="idl-code" data-link-type="constructor" href="#dom-mime-mime" id="ref-for-dom-mime-mime"><c- g>Constructor</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString"><c- b>USVString</c-></a> <dfn class="idl-code" data-dfn-for="MIME/MIME(mime)" data-dfn-type="argument" data-export id="dom-mime-mime-mime-mime"><code><c- g>mime</c-></code><a class="self-link" href="#dom-mime-mime-mime-mime"></a></dfn>),
+ <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=(<c- n>Window</c->,<c- n>Worker</c->)]
+<c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="mime"><code><c- g>MIME</c-></code></dfn> {
+           <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①"><c- b>USVString</c-></a> <a class="idl-code" data-link-type="attribute" data-type="USVString" href="#dom-mime-type" id="ref-for-dom-mime-type"><c- g>type</c-></a>;
+           <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString②"><c- b>USVString</c-></a> <a class="idl-code" data-link-type="attribute" data-type="USVString" href="#dom-mime-subtype" id="ref-for-dom-mime-subtype"><c- g>subtype</c-></a>;
+  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#mimeparams" id="ref-for-mimeparams"><c- n>MIMEParams</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="MIMEParams" href="#dom-mime-params" id="ref-for-dom-mime-params"><c- g>params</c-></a>;
 
-  <dfn class="kt" data-dfn-for="MIME" data-dfn-type="dfn" data-lt="stringification behavior" data-noexport="" id="MIME-stringification-behavior">stringifier<a class="self-link" href="#MIME-stringification-behavior"></a></dfn> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString③"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIME" data-dfn-type="stringifier" data-export="" data-lt="toJSON()" id="dom-mime-tojson"><code>toJSON</code><a class="self-link" href="#dom-mime-tojson"></a></dfn>();
+  <dfn data-dfn-for="MIME" data-dfn-type="dfn" data-export data-lt="stringification behavior" id="MIME-stringification-behavior"><c- b>stringifier</c-><a class="self-link" href="#MIME-stringification-behavior"></a></dfn> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString③"><c- b>USVString</c-></a> <dfn class="idl-code" data-dfn-for="MIME" data-dfn-type="stringifier" data-export data-lt="toJSON()" id="dom-mime-tojson"><code><c- g>toJSON</c-></code><a class="self-link" href="#dom-mime-tojson"></a></dfn>();
 };
 </pre>
-   <p>A <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime①">MIME</a></code> object has an associated <a data-link-type="dfn">mime</a> (a <a data-link-type="dfn">MIME</a>) and <a a="mimesniff" data-link-type="dfn">parameters</a> (a <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams①">MIMEParams</a></code> object). </p>
+   <p>A <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime①">MIME</a></code> object has an associated <dfn class="dfn-paneled" data-dfn-for="MIME" data-dfn-type="dfn" data-export id="mime-mime">mime</dfn> that is a <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#mime-type" id="ref-for-mime-type">MIME type</a> and <dfn class="dfn-paneled" data-dfn-for="MIME" data-dfn-type="dfn" data-export id="mime-parameters">parameters</dfn> that is a <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams①">MIMEParams</a></code> object. </p>
    <hr>
-   <p id="constructors">The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="constructor" data-export="" id="dom-mime-mime"><code>MIME(<var>mime</var>)</code></dfn> constructor, when invoked, must run these steps: </p>
+   <p id="constructors">The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="constructor" data-export id="dom-mime-mime"><code>MIME(<var>mime</var>)</code></dfn> constructor, when invoked, must run these steps: </p>
    <ol>
     <li>
      <p>Let <var>mimeType</var> be null. </p>
@@ -1575,84 +1575,94 @@ Parts of this work may be from another specification document.  If so, those par
     <li>
      <p>If <var>mimeType</var> is failure, then <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-throw" id="ref-for-dfn-throw">throw</a> a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror④">TypeError</a></code>. </p>
     <li>
-     <p>Let <var>params</var> be <var>mimeType</var>’s <a data-link-type="dfn">parameters</a>. </p>
+     <p>Let <var>params</var> be <var>mimeType</var>’s <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#parameters" id="ref-for-parameters">parameters</a>. </p>
     <li>
      <p>Let <var>result</var> be a new <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime②">MIME</a></code> object. </p>
     <li>
-     <p>Set <var>result</var>’s <a data-link-type="dfn">mime</a> to <var>mimeType</var>. </p>
+     <p>Set <var>result</var>’s <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime">mime</a> to <var>mimeType</var>. </p>
     <li>
-     <p>Set <var>result</var>’s <a data-link-type="dfn">parameters object</a> to a <a data-link-type="dfn" href="#concept-mimeparams-new" id="ref-for-concept-mimeparams-new">new</a> <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams②">MIMEParams</a></code>, and then set that <a data-link-type="dfn">parameters object</a>’s <a data-link-type="dfn">parameters object</a> to <var>params</var>. </p>
+     <p>Set <var>result</var>’s <a data-link-type="dfn" href="#mime-parameters" id="ref-for-mime-parameters">parameters object</a> to a <a data-link-type="dfn" href="#concept-mimeparams-new" id="ref-for-concept-mimeparams-new">new MIMEParams</a>, and then set that <a data-link-type="dfn" href="#mime-parameters" id="ref-for-mime-parameters①">parameters object</a>’s <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters">parameters object</a> to <var>params</var>. </p>
     <li>
      <p>Return <var>result</var>. </p>
    </ol>
-   <div class="example no-backref" id="example-5434421b">
-    <a class="self-link" href="#example-5434421b"></a> 
-    <p>To <a>parse</a> a string into a <a data-link-type="dfn">MIME</a>, invoke the <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime③">MIME</a></code> constructor with a single argument: </p>
-<pre><code class="lang-javascript highlight"><span class="kd">var</span> input <span class="o">=</span> <span class="s2">"text/javascript; charset=utf-8;"</span><span class="p">,</span>
-    mime <span class="o">=</span> <span class="k">new</span> MIME<span class="p">(</span>input<span class="p">)</span>
-mime<span class="p">.</span>subtype <span class="c1">// "javascript"</span></code></pre>
+   <div class="example no-backref" id="example-69f78808">
+    <a class="self-link" href="#example-69f78808"></a> 
+    <p>To <a>parse</a> a string into a <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime①">MIME</a>, invoke the <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime③">MIME</a></code> constructor with a single argument: </p>
+<pre><code class="lang-javascript highlight"><c- a>var</c-> input <c- o>=</c-> <c- u>"text/javascript; charset=utf-8;"</c-><c- p>,</c->
+    mime <c- o>=</c-> <c- k>new</c-> MIME<c- p>(</c->input<c- p>)</c->
+mime<c- p>.</c->subtype <c- c1>// "javascript"</c-></code></pre>
     <p>This throws an exception if the input is not a valid MIME: </p>
-<pre><code class="lang-javascript highlight"><span class="k">try</span> <span class="p">{</span>
-  <span class="kd">var</span> mime <span class="o">=</span> <span class="k">new</span> MIME<span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">catch</span><span class="p">(</span>e<span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// that happened</span>
-<span class="c1"></span><span class="p">}</span></code></pre>
+<pre><code class="lang-javascript highlight"><c- k>try</c-> <c- p>{</c->
+  <c- a>var</c-> mime <c- o>=</c-> <c- k>new</c-> MIME<c- p>(</c-><c- u>"/"</c-><c- p>)</c->
+<c- p>}</c-> <c- k>catch</c-><c- p>(</c->e<c- p>)</c-> <c- p>{</c->
+  <c- c1>// that happened</c->
+<c- p>}</c-></code></pre>
     <p>A <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime④">MIME</a></code> object can be used as input (while IDL requires a string as argument, a <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime⑤">MIME</a></code> object stringifies to its serialized form):</p>
-<pre><code class="lang-javascript highlight"><span class="kd">var</span> mime <span class="o">=</span> <span class="k">new</span> MIME<span class="p">(</span><span class="k">new</span> MIME<span class="p">(</span><span class="s2">"text/plain"</span><span class="p">))</span>
-mime<span class="p">.</span>type <span class="c1">// "text"</span></code></pre>
+<pre><code class="lang-javascript highlight"><c- a>var</c-> mime <c- o>=</c-> <c- k>new</c-> MIME<c- p>(</c-><c- k>new</c-> MIME<c- p>(</c-><c- u>"text/plain"</c-><c- p>))</c->
+mime<c- p>.</c->type <c- c1>// "text"</c-></code></pre>
    </div>
    <hr id="mimeutils-members">
-   <p>The <dfn class="idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" id="dom-mime-href"><code>href</code><a class="self-link" href="#dom-mime-href"></a></dfn> attribute’s getter and the <dfn class="idl-code" data-dfn-for="/" data-dfn-type="method" data-export="" id="dom---tojson"><code>toJSON()</code><a class="self-link" href="#dom---tojson"></a></dfn> method, when invoked, must return the <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#serialize-a-mime-type" id="ref-for-serialize-a-mime-type">serialize a mime type</a> algorithm on <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object">context object</a>’s <a data-link-type="dfn">mime</a>. </p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" id="dom-mime-type"><code>type</code></dfn> attribute’s getter must run these steps: </p>
+   <p>The <dfn class="idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export id="dom-mime-href"><code>href</code><a class="self-link" href="#dom-mime-href"></a></dfn> attribute’s getter and the <dfn class="idl-code" data-dfn-for="MIME" data-dfn-type="method" data-export id="dom-mime-tojson①"><code>toJSON()</code><a class="self-link" href="#dom-mime-tojson①"></a></dfn> method, when invoked, must return the <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#serialize-a-mime-type" id="ref-for-serialize-a-mime-type">serialize a mime type</a> algorithm on <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object">context object</a>’s <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime②">mime</a>. </p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export id="dom-mime-type"><code>type</code></dfn> attribute’s getter must run these steps: </p>
    <ol>
     <li>
-     <p>Return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object①">context object</a>’s <a data-link-type="dfn">mime</a>’s <a data-link-type="dfn">type</a>. </p>
+     <p>Return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object①">context object</a>’s <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime③">mime</a>’s <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#type" id="ref-for-type">type</a>. </p>
    </ol>
    <p>The <code><a class="idl-code" data-link-type="attribute" href="#dom-mime-type" id="ref-for-dom-mime-type①">type</a></code> attribute’s setter must run these steps: </p>
    <ol>
     <li>
-     <p><a data-link-type="dfn" href="#set-the-type" id="ref-for-set-the-type">Set the type</a> given <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object②">context object</a>’s <a data-link-type="dfn">mime</a> and the given value. </p>
+     <p><a data-link-type="dfn" href="#set-the-type" id="ref-for-set-the-type">set the type</a> given <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object②">context object</a>’s <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime④">mime</a> and the given value. </p>
    </ol>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export="" id="dom-mime-mimeparams"><code>mimeParams</code></dfn> attribute’s getter must return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object③">context object</a>’s <a data-link-type="dfn">parameters object</a>. </p>
-   <h3 class="heading settled" data-level="2.2" id="interface-mimeparams"><span class="secno">2.2. </span><span class="content">MIMEParams class</span><a class="self-link" href="#interface-mimeparams"></a></h3>
-<pre class="idl highlight def">[<a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①">Exposed</a>=(<span class="n">Window</span>,<span class="n">Worker</span>)]
-<span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="mimeparams"><code>MIMEParams</code></dfn> {
-  <span class="kt">void</span> <a class="nv idl-code" data-link-type="method" href="#dom-mimeparams-delete" id="ref-for-dom-mimeparams-delete">delete</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString④"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIMEParams/delete(name)" data-dfn-type="argument" data-export="" id="dom-mimeparams-delete-name-name"><code>name</code><a class="self-link" href="#dom-mimeparams-delete-name-name"></a></dfn>);
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑤"><span class="kt">USVString</span></a>? <a class="nv idl-code" data-link-type="method" href="#dom-mimeparams-get" id="ref-for-dom-mimeparams-get">get</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑥"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIMEParams/get(name)" data-dfn-type="argument" data-export="" id="dom-mimeparams-get-name-name"><code>name</code><a class="self-link" href="#dom-mimeparams-get-name-name"></a></dfn>);
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="method" href="#dom-mimeparams-has" id="ref-for-dom-mimeparams-has">has</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑦"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIMEParams/has(name)" data-dfn-type="argument" data-export="" id="dom-mimeparams-has-name-name"><code>name</code><a class="self-link" href="#dom-mimeparams-has-name-name"></a></dfn>);
-  <span class="kt">void</span> <a class="nv idl-code" data-link-type="method" href="#dom-mimeparams-set" id="ref-for-dom-mimeparams-set">set</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑧"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIMEParams/set(name, value)" data-dfn-type="argument" data-export="" id="dom-mimeparams-set-name-value-name"><code>name</code><a class="self-link" href="#dom-mimeparams-set-name-value-name"></a></dfn>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑨"><span class="kt">USVString</span></a> <dfn class="nv idl-code" data-dfn-for="MIMEParams/set(name, value)" data-dfn-type="argument" data-export="" id="dom-mimeparams-set-name-value-value"><code>value</code><a class="self-link" href="#dom-mimeparams-set-name-value-value"></a></dfn>);
-
-  <span class="kt">iterable</span>&lt;<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①⓪"><span class="kt">USVString</span></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①①"><span class="kt">USVString</span></a>>;
-};
-</pre>
-   <p>A <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams③">MIMEParams</a></code> object has an associated <a data-link-type="dfn">parameters</a> object <dfn class="dfn-paneled" data-dfn-for="MIMEParams" data-dfn-type="dfn" data-noexport="" id="mimeparams-parameters">parameters</dfn>,
-which is initially null. </p>
-   <p>To create a <dfn class="dfn-paneled" data-dfn-for="MIMEParams" data-dfn-type="dfn" data-export="" id="concept-mimeparams-new">new</dfn> <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams④">MIMEParams</a></code> object using <var>init</var>, run these steps: </p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export id="dom-mime-subtype"><code>subtype</code></dfn> attribute’s getter must run these steps: </p>
    <ol>
     <li>
-     <p>Let <var>params</var> be a new <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams⑤">MIMEParams</a></code> object. </p>
+     <p>Return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object③">context object</a>’s <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime⑤">mime</a>’s <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#subtype" id="ref-for-subtype">subtype</a>. </p>
+   </ol>
+   <p>The <code><a class="idl-code" data-link-type="attribute" href="#dom-mime-subtype" id="ref-for-dom-mime-subtype①">subtype</a></code> attribute’s setter must run these steps: </p>
+   <ol>
     <li>
-     <p>If <var>init</var> is not a mime record’s <a data-link-type="dfn">parameters</a> object, then <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-throw" id="ref-for-dfn-throw①">throw</a> a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror⑤">TypeError</a></code>. </p>
+     <p><a data-link-type="dfn" href="#set-the-subtype" id="ref-for-set-the-subtype">set the subtype</a> given <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object④">context object</a>’s <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime⑥">mime</a> and the given value. </p>
+   </ol>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIME" data-dfn-type="attribute" data-export id="dom-mime-params"><code>params</code></dfn> attribute’s getter must return <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#context-object" id="ref-for-context-object⑤">context object</a>’s <a data-link-type="dfn" href="#mime-parameters" id="ref-for-mime-parameters②">parameters object</a>. </p>
+   <h3 class="heading settled" data-level="2.2" id="interface-mimeparams"><span class="secno">2.2. </span><span class="content">MIMEParams class</span><a class="self-link" href="#interface-mimeparams"></a></h3>
+<pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=(<c- n>Window</c->,<c- n>Worker</c->)]
+<c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="mimeparams"><code><c- g>MIMEParams</c-></code></dfn> {
+  <c- b>void</c-> <a class="idl-code" data-link-type="method" href="#dom-mimeparams-delete" id="ref-for-dom-mimeparams-delete"><c- g>delete</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString④"><c- b>USVString</c-></a> <dfn class="idl-code" data-dfn-for="MIMEParams/delete(name)" data-dfn-type="argument" data-export id="dom-mimeparams-delete-name-name"><code><c- g>name</c-></code><a class="self-link" href="#dom-mimeparams-delete-name-name"></a></dfn>);
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑤"><c- b>USVString</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-mimeparams-get" id="ref-for-dom-mimeparams-get"><c- g>get</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑥"><c- b>USVString</c-></a> <dfn class="idl-code" data-dfn-for="MIMEParams/get(name)" data-dfn-type="argument" data-export id="dom-mimeparams-get-name-name"><code><c- g>name</c-></code><a class="self-link" href="#dom-mimeparams-get-name-name"></a></dfn>);
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-mimeparams-has" id="ref-for-dom-mimeparams-has"><c- g>has</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑦"><c- b>USVString</c-></a> <dfn class="idl-code" data-dfn-for="MIMEParams/has(name)" data-dfn-type="argument" data-export id="dom-mimeparams-has-name-name"><code><c- g>name</c-></code><a class="self-link" href="#dom-mimeparams-has-name-name"></a></dfn>);
+  <c- b>void</c-> <a class="idl-code" data-link-type="method" href="#dom-mimeparams-set" id="ref-for-dom-mimeparams-set"><c- g>set</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑧"><c- b>USVString</c-></a> <dfn class="idl-code" data-dfn-for="MIMEParams/set(name, value)" data-dfn-type="argument" data-export id="dom-mimeparams-set-name-value-name"><code><c- g>name</c-></code><a class="self-link" href="#dom-mimeparams-set-name-value-name"></a></dfn>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑨"><c- b>USVString</c-></a> <dfn class="idl-code" data-dfn-for="MIMEParams/set(name, value)" data-dfn-type="argument" data-export id="dom-mimeparams-set-name-value-value"><code><c- g>value</c-></code><a class="self-link" href="#dom-mimeparams-set-name-value-value"></a></dfn>);
+
+  <c- b>iterable</c->&lt;<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①⓪"><c- b>USVString</c-></a>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①①"><c- b>USVString</c-></a>>;
+};
+</pre>
+   <p>A <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams②">MIMEParams</a></code> object has an associated <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#parameters" id="ref-for-parameters①">parameters</a> object <dfn class="dfn-paneled" data-dfn-for="MIMEParams" data-dfn-type="dfn" data-noexport id="mimeparams-parameters">parameters</dfn>,
+which is initially null. </p>
+   <p>To create a <dfn class="dfn-paneled" data-dfn-for="MIMEParams" data-dfn-type="dfn" data-export id="concept-mimeparams-new">new</dfn> <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams③">MIMEParams</a></code> object using <var>init</var>, run these steps: </p>
+   <ol>
+    <li>
+     <p>Let <var>params</var> be a new <code class="idl"><a data-link-type="idl" href="#mimeparams" id="ref-for-mimeparams④">MIMEParams</a></code> object. </p>
+    <li>
+     <p>If <var>init</var> is not a mime record’s <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#parameters" id="ref-for-parameters②">parameters</a> object, then <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-throw" id="ref-for-dfn-throw①">throw</a> a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror⑤">TypeError</a></code>. </p>
     <li>
      <p>Return <var>params</var>. </p>
    </ol>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIMEParams" data-dfn-type="method" data-export="" id="dom-mimeparams-delete"><code>delete(<var>name</var>)</code></dfn> method, when
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIMEParams" data-dfn-type="method" data-export id="dom-mimeparams-delete"><code>delete(<var>name</var>)</code></dfn> method, when
 invoked, must run these steps: </p>
    <ol>
     <li>
-     <p>If there is not a property whose name is <var>name</var> in <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters">parameters</a>, return false. </p>
+     <p>If there is not a property whose name is <var>name</var> in <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters①">parameters</a>, return false. </p>
     <li>
-     <p>Delete the property whose name is <var>name</var> in <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters①">parameters</a>. </p>
+     <p>Delete the property whose name is <var>name</var> in <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters②">parameters</a>. </p>
     <li>
      <p>Return true. </p>
    </ol>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIMEParams" data-dfn-type="method" data-export="" id="dom-mimeparams-get"><code>get(<var>name</var>)</code></dfn> method, when invoked, must return the value of the property whose name is <var>name</var> in <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters②">parameters</a>, if there is such a property, and null otherwise. </p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIMEParams" data-dfn-type="method" data-export="" id="dom-mimeparams-has"><code>has(<var>name</var>)</code></dfn> method, when invoked, must return true if there is a property whose name is <var>name</var> in <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters③">parameters</a>, and false otherwise. </p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIMEParams" data-dfn-type="method" data-export="" id="dom-mimeparams-set"><code>set(<var>name</var>, <var>value</var>)</code></dfn> method, when invoked, must return the result of <a data-link-type="dfn">setting a parameter</a> given <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters④">parameters</a>, <var>name</var>, and <var>value</var> </p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIMEParams" data-dfn-type="method" data-export id="dom-mimeparams-get"><code>get(<var>name</var>)</code></dfn> method, when invoked, must return the value of the property whose name is <var>name</var> in <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters③">parameters</a>, if there is such a property, and null otherwise. </p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIMEParams" data-dfn-type="method" data-export id="dom-mimeparams-has"><code>has(<var>name</var>)</code></dfn> method, when invoked, must return true if there is a property whose name is <var>name</var> in <a data-link-type="dfn" href="#mimeparams-parameters" id="ref-for-mimeparams-parameters④">parameters</a>, and false otherwise. </p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="MIMEParams" data-dfn-type="method" data-export id="dom-mimeparams-set"><code>set(<var>name</var>, <var>value</var>)</code></dfn> method, when invoked, must return the result of performing <a data-link-type="dfn" href="#set-a-parameter" id="ref-for-set-a-parameter">set a parameter</a> given <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#parameters" id="ref-for-parameters③">parameters</a>, <var>name</var>, and <var>value</var> </p>
    <hr>
    <h3 class="heading settled" data-level="2.3" id="mime-apis-elsewhere"><span class="secno">2.3. </span><span class="content">MIME APIs elsewhere</span><a class="self-link" href="#mime-apis-elsewhere"></a></h3>
-   <p>A standard that exposes <a data-link-type="dfn">MIMEs</a>, should expose the <a data-link-type="dfn">MIME</a> as a string (by
-running <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#serialize-a-mime-type" id="ref-for-serialize-a-mime-type①">serialize a mime type</a> for an internal <a data-link-type="dfn">MIME</a>’s mime). A standard should not expose a <a data-link-type="dfn">MIME</a> using a <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime⑥">MIME</a></code> object. <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime⑦">MIME</a></code> objects are meant for <a data-link-type="dfn">MIME</a> manipulation. In IDL the USVString type should be used. </p>
+   <p>A standard that exposes <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime⑦">MIMEs</a>, should expose the <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime⑧">MIME</a> as a string (by
+running <a data-link-type="dfn" href="https://mimesniff.spec.whatwg.org/#serialize-a-mime-type" id="ref-for-serialize-a-mime-type①">serialize a mime type</a> for an internal <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime⑨">MIME’s</a> mime). A standard should not expose a <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime①⓪">MIME</a> using a <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime⑥">MIME</a></code> object. <code class="idl"><a data-link-type="idl" href="#mime" id="ref-for-mime⑦">MIME</a></code> objects are meant for <a data-link-type="dfn" href="#mime-mime" id="ref-for-mime-mime①①">MIME</a> manipulation. In IDL the USVString type should be used. </p>
    <p class="note" role="note">The higher-level notion here is that values are to be exposed as immutable data
 structures. </p>
    <p>If a standard decides to use a variant of the name "MIME" for a feature it defines, it should name
@@ -1820,11 +1830,17 @@ Bradley Farias
    <li><a href="#dom-mimeparams-has">has(name)</a><span>, in §2.2</span>
    <li><a href="#dom-mime-href">href</a><span>, in §2.1</span>
    <li><a href="#mime">MIME</a><span>, in §2.1</span>
+   <li><a href="#mime-mime">mime</a><span>, in §2.1</span>
    <li><a href="#dom-mime-mime">MIME(mime)</a><span>, in §2.1</span>
-   <li><a href="#dom-mime-mimeparams">mimeParams</a><span>, in §2.1</span>
    <li><a href="#mimeparams">MIMEParams</a><span>, in §2.2</span>
    <li><a href="#concept-mimeparams-new">new</a><span>, in §2.2</span>
-   <li><a href="#mimeparams-parameters">parameters</a><span>, in §2.2</span>
+   <li>
+    parameters
+    <ul>
+     <li><a href="#mime-parameters">dfn for MIME</a><span>, in §2.1</span>
+     <li><a href="#mimeparams-parameters">dfn for MIMEParams</a><span>, in §2.2</span>
+    </ul>
+   <li><a href="#dom-mime-params">params</a><span>, in §2.1</span>
    <li><a href="#set-a-parameter">set a parameter</a><span>, in §1</span>
    <li><a href="#dom-mimeparams-set">set(name, value)</a><span>, in §2.2</span>
    <li><a href="#set-the-subtype">set the subtype</a><span>, in §1</span>
@@ -1834,7 +1850,7 @@ Bradley Farias
    <li>
     toJSON()
     <ul>
-     <li><a href="#dom---tojson">method for /</a><span>, in §2.1</span>
+     <li><a href="#dom-mime-tojson①">method for MIME</a><span>, in §2.1</span>
      <li><a href="#dom-mime-tojson">stringifier for MIME</a><span>, in §2.1</span>
     </ul>
    <li><a href="#dom-mime-type">type</a><span>, in §2.1</span>
@@ -1842,7 +1858,7 @@ Bradley Farias
   <aside class="dfn-panel" data-for="term-for-context-object">
    <a href="https://dom.spec.whatwg.org/#context-object">https://dom.spec.whatwg.org/#context-object</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-context-object">2.1. MIME class</a> <a href="#ref-for-context-object①">(2)</a> <a href="#ref-for-context-object②">(3)</a> <a href="#ref-for-context-object③">(4)</a>
+    <li><a href="#ref-for-context-object">2.1. MIME class</a> <a href="#ref-for-context-object①">(2)</a> <a href="#ref-for-context-object②">(3)</a> <a href="#ref-for-context-object③">(4)</a> <a href="#ref-for-context-object④">(5)</a> <a href="#ref-for-context-object⑤">(6)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-eventsource">
@@ -1857,10 +1873,23 @@ Bradley Farias
     <li><a href="#ref-for-hashchangeevent">2.3. MIME APIs elsewhere</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-ascii-whitespace">
-   <a href="https://infra.spec.whatwg.org/#ascii-whitespace">https://infra.spec.whatwg.org/#ascii-whitespace</a><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="term-for-ascii-lowercase">
+   <a href="https://infra.spec.whatwg.org/#ascii-lowercase">https://infra.spec.whatwg.org/#ascii-lowercase</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-ascii-whitespace">1. Infrastructure</a> <a href="#ref-for-ascii-whitespace①">(2)</a> <a href="#ref-for-ascii-whitespace②">(3)</a>
+    <li><a href="#ref-for-ascii-lowercase">1. Infrastructure</a> <a href="#ref-for-ascii-lowercase①">(2)</a> <a href="#ref-for-ascii-lowercase②">(3)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-mime-type">
+   <a href="https://mimesniff.spec.whatwg.org/#mime-type">https://mimesniff.spec.whatwg.org/#mime-type</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-mime-type">2.1. MIME class</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-parameters">
+   <a href="https://mimesniff.spec.whatwg.org/#parameters">https://mimesniff.spec.whatwg.org/#parameters</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-parameters">2.1. MIME class</a>
+    <li><a href="#ref-for-parameters①">2.2. MIMEParams class</a> <a href="#ref-for-parameters②">(2)</a> <a href="#ref-for-parameters③">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-parse-a-mime-type">
@@ -1874,6 +1903,18 @@ Bradley Farias
    <ul>
     <li><a href="#ref-for-serialize-a-mime-type">2.1. MIME class</a>
     <li><a href="#ref-for-serialize-a-mime-type①">2.3. MIME APIs elsewhere</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-subtype">
+   <a href="https://mimesniff.spec.whatwg.org/#subtype">https://mimesniff.spec.whatwg.org/#subtype</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-subtype">2.1. MIME class</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-type">
+   <a href="https://mimesniff.spec.whatwg.org/#type">https://mimesniff.spec.whatwg.org/#type</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-type">2.1. MIME class</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-Exposed">
@@ -1933,13 +1974,17 @@ Bradley Farias
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-ascii-whitespace" style="color:initial">ascii whitespace</span>
+     <li><span class="dfn-paneled" id="term-for-ascii-lowercase" style="color:initial">ascii lowercase</span>
     </ul>
    <li>
     <a data-link-type="biblio">[MIMESNIFF]</a> defines the following terms:
     <ul>
+     <li><span class="dfn-paneled" id="term-for-mime-type" style="color:initial">mime type</span>
+     <li><span class="dfn-paneled" id="term-for-parameters" style="color:initial">parameters</span>
      <li><span class="dfn-paneled" id="term-for-parse-a-mime-type" style="color:initial">parse a mime type</span>
      <li><span class="dfn-paneled" id="term-for-serialize-a-mime-type" style="color:initial">serialize a mime type</span>
+     <li><span class="dfn-paneled" id="term-for-subtype" style="color:initial">subtype</span>
+     <li><span class="dfn-paneled" id="term-for-type" style="color:initial">type</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WebIDL]</a> defines the following terms:
@@ -1966,27 +2011,27 @@ Bradley Farias
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-webidl">[WebIDL]
-   <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://heycam.github.io/webidl/">Web IDL</a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
+   <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/">Web IDL</a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
-<pre class="idl highlight def">[<a class="nv idl-code" data-link-type="constructor" href="#dom-mime-mime" id="ref-for-dom-mime-mime①">Constructor</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①③"><span class="kt">USVString</span></a> <a class="nv" href="#dom-mime-mime-mime-mime"><code>mime</code></a>),
- <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed②">Exposed</a>=(<span class="n">Window</span>,<span class="n">Worker</span>)]
-<span class="kt">interface</span> <a class="nv" href="#mime"><code>MIME</code></a> {
-           <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①②"><span class="kt">USVString</span></a> <a class="nv idl-code" data-link-type="attribute" data-type="USVString" href="#dom-mime-type" id="ref-for-dom-mime-type②">type</a>;
-           <span class="kt">attribute</span> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString②①"><span class="kt">USVString</span></a> <a class="nv" data-type="USVString" href="#dom-mime-subtype"><code>subtype</code></a>;
-  [<a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject①">SameObject</a>] <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#mimeparams" id="ref-for-mimeparams⑥">MIMEParams</a> <a class="nv idl-code" data-link-type="attribute" data-readonly="" data-type="MIMEParams" href="#dom-mime-mimeparams" id="ref-for-dom-mime-mimeparams①">mimeParams</a>;
+<pre class="idl highlight def">[<a class="idl-code" data-link-type="constructor" href="#dom-mime-mime" id="ref-for-dom-mime-mime①"><c- g>Constructor</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①③"><c- b>USVString</c-></a> <a href="#dom-mime-mime-mime-mime"><code><c- g>mime</c-></code></a>),
+ <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed②"><c- g>Exposed</c-></a>=(<c- n>Window</c->,<c- n>Worker</c->)]
+<c- b>interface</c-> <a href="#mime"><code><c- g>MIME</c-></code></a> {
+           <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①②"><c- b>USVString</c-></a> <a class="idl-code" data-link-type="attribute" data-type="USVString" href="#dom-mime-type" id="ref-for-dom-mime-type②"><c- g>type</c-></a>;
+           <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString②①"><c- b>USVString</c-></a> <a class="idl-code" data-link-type="attribute" data-type="USVString" href="#dom-mime-subtype" id="ref-for-dom-mime-subtype②"><c- g>subtype</c-></a>;
+  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject①"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#mimeparams" id="ref-for-mimeparams⑤"><c- n>MIMEParams</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="MIMEParams" href="#dom-mime-params" id="ref-for-dom-mime-params①"><c- g>params</c-></a>;
 
-  <a class="kt" href="#MIME-stringification-behavior">stringifier</a> <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString③①"><span class="kt">USVString</span></a> <a class="nv" href="#dom-mime-tojson"><code>toJSON</code></a>();
+  <a href="#MIME-stringification-behavior"><c- b>stringifier</c-></a> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString③①"><c- b>USVString</c-></a> <a href="#dom-mime-tojson"><code><c- g>toJSON</c-></code></a>();
 };
 
-[<a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①①">Exposed</a>=(<span class="n">Window</span>,<span class="n">Worker</span>)]
-<span class="kt">interface</span> <a class="nv" href="#mimeparams"><code>MIMEParams</code></a> {
-  <span class="kt">void</span> <a class="nv idl-code" data-link-type="method" href="#dom-mimeparams-delete" id="ref-for-dom-mimeparams-delete①">delete</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString④①"><span class="kt">USVString</span></a> <a class="nv" href="#dom-mimeparams-delete-name-name"><code>name</code></a>);
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑤①"><span class="kt">USVString</span></a>? <a class="nv idl-code" data-link-type="method" href="#dom-mimeparams-get" id="ref-for-dom-mimeparams-get①">get</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑥①"><span class="kt">USVString</span></a> <a class="nv" href="#dom-mimeparams-get-name-name"><code>name</code></a>);
-  <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean①"><span class="kt">boolean</span></a> <a class="nv idl-code" data-link-type="method" href="#dom-mimeparams-has" id="ref-for-dom-mimeparams-has①">has</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑦①"><span class="kt">USVString</span></a> <a class="nv" href="#dom-mimeparams-has-name-name"><code>name</code></a>);
-  <span class="kt">void</span> <a class="nv idl-code" data-link-type="method" href="#dom-mimeparams-set" id="ref-for-dom-mimeparams-set①">set</a>(<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑧①"><span class="kt">USVString</span></a> <a class="nv" href="#dom-mimeparams-set-name-value-name"><code>name</code></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑨①"><span class="kt">USVString</span></a> <a class="nv" href="#dom-mimeparams-set-name-value-value"><code>value</code></a>);
+[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①①"><c- g>Exposed</c-></a>=(<c- n>Window</c->,<c- n>Worker</c->)]
+<c- b>interface</c-> <a href="#mimeparams"><code><c- g>MIMEParams</c-></code></a> {
+  <c- b>void</c-> <a class="idl-code" data-link-type="method" href="#dom-mimeparams-delete" id="ref-for-dom-mimeparams-delete①"><c- g>delete</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString④①"><c- b>USVString</c-></a> <a href="#dom-mimeparams-delete-name-name"><code><c- g>name</c-></code></a>);
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑤①"><c- b>USVString</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-mimeparams-get" id="ref-for-dom-mimeparams-get①"><c- g>get</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑥①"><c- b>USVString</c-></a> <a href="#dom-mimeparams-get-name-name"><code><c- g>name</c-></code></a>);
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean①"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-mimeparams-has" id="ref-for-dom-mimeparams-has①"><c- g>has</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑦①"><c- b>USVString</c-></a> <a href="#dom-mimeparams-has-name-name"><code><c- g>name</c-></code></a>);
+  <c- b>void</c-> <a class="idl-code" data-link-type="method" href="#dom-mimeparams-set" id="ref-for-dom-mimeparams-set①"><c- g>set</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑧①"><c- b>USVString</c-></a> <a href="#dom-mimeparams-set-name-value-name"><code><c- g>name</c-></code></a>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString⑨①"><c- b>USVString</c-></a> <a href="#dom-mimeparams-set-name-value-value"><code><c- g>value</c-></code></a>);
 
-  <span class="kt">iterable</span>&lt;<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①⓪①"><span class="kt">USVString</span></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①①①"><span class="kt">USVString</span></a>>;
+  <c- b>iterable</c->&lt;<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①⓪①"><c- b>USVString</c-></a>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-USVString" id="ref-for-idl-USVString①①①"><c- b>USVString</c-></a>>;
 };
 
 </pre>
@@ -1996,12 +2041,37 @@ Bradley Farias
     <li><a href="#ref-for-set-the-type">2.1. MIME class</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="set-the-subtype">
+   <b><a href="#set-the-subtype">#set-the-subtype</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-set-the-subtype">2.1. MIME class</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="set-a-parameter">
+   <b><a href="#set-a-parameter">#set-a-parameter</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-set-a-parameter">2.2. MIMEParams class</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="mime">
    <b><a href="#mime">#mime</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-mime">Goals</a>
     <li><a href="#ref-for-mime①">2.1. MIME class</a> <a href="#ref-for-mime②">(2)</a> <a href="#ref-for-mime③">(3)</a> <a href="#ref-for-mime④">(4)</a> <a href="#ref-for-mime⑤">(5)</a>
     <li><a href="#ref-for-mime⑥">2.3. MIME APIs elsewhere</a> <a href="#ref-for-mime⑦">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="mime-mime">
+   <b><a href="#mime-mime">#mime-mime</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-mime-mime">2.1. MIME class</a> <a href="#ref-for-mime-mime①">(2)</a> <a href="#ref-for-mime-mime②">(3)</a> <a href="#ref-for-mime-mime③">(4)</a> <a href="#ref-for-mime-mime④">(5)</a> <a href="#ref-for-mime-mime⑤">(6)</a> <a href="#ref-for-mime-mime⑥">(7)</a>
+    <li><a href="#ref-for-mime-mime⑦">2.3. MIME APIs elsewhere</a> <a href="#ref-for-mime-mime⑧">(2)</a> <a href="#ref-for-mime-mime⑨">(3)</a> <a href="#ref-for-mime-mime①⓪">(4)</a> <a href="#ref-for-mime-mime①①">(5)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="mime-parameters">
+   <b><a href="#mime-parameters">#mime-parameters</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-mime-parameters">2.1. MIME class</a> <a href="#ref-for-mime-parameters①">(2)</a> <a href="#ref-for-mime-parameters②">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-mime-mime">
@@ -2016,23 +2086,30 @@ Bradley Farias
     <li><a href="#ref-for-dom-mime-type">2.1. MIME class</a> <a href="#ref-for-dom-mime-type①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-mime-mimeparams">
-   <b><a href="#dom-mime-mimeparams">#dom-mime-mimeparams</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-mime-subtype">
+   <b><a href="#dom-mime-subtype">#dom-mime-subtype</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-mime-mimeparams">2.1. MIME class</a>
+    <li><a href="#ref-for-dom-mime-subtype">2.1. MIME class</a> <a href="#ref-for-dom-mime-subtype①">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-mime-params">
+   <b><a href="#dom-mime-params">#dom-mime-params</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-mime-params">2.1. MIME class</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="mimeparams">
    <b><a href="#mimeparams">#mimeparams</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-mimeparams">2.1. MIME class</a> <a href="#ref-for-mimeparams①">(2)</a> <a href="#ref-for-mimeparams②">(3)</a>
-    <li><a href="#ref-for-mimeparams③">2.2. MIMEParams class</a> <a href="#ref-for-mimeparams④">(2)</a> <a href="#ref-for-mimeparams⑤">(3)</a>
+    <li><a href="#ref-for-mimeparams">2.1. MIME class</a> <a href="#ref-for-mimeparams①">(2)</a>
+    <li><a href="#ref-for-mimeparams②">2.2. MIMEParams class</a> <a href="#ref-for-mimeparams③">(2)</a> <a href="#ref-for-mimeparams④">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="mimeparams-parameters">
    <b><a href="#mimeparams-parameters">#mimeparams-parameters</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-mimeparams-parameters">2.2. MIMEParams class</a> <a href="#ref-for-mimeparams-parameters①">(2)</a> <a href="#ref-for-mimeparams-parameters②">(3)</a> <a href="#ref-for-mimeparams-parameters③">(4)</a> <a href="#ref-for-mimeparams-parameters④">(5)</a>
+    <li><a href="#ref-for-mimeparams-parameters">2.1. MIME class</a>
+    <li><a href="#ref-for-mimeparams-parameters①">2.2. MIMEParams class</a> <a href="#ref-for-mimeparams-parameters②">(2)</a> <a href="#ref-for-mimeparams-parameters③">(3)</a> <a href="#ref-for-mimeparams-parameters④">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="concept-mimeparams-new">
