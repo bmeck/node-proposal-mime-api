@@ -17,7 +17,7 @@ Status: DREAM
 <p>The MIME standard takes the following approach towards making MIMEs easier to use:
 
 <ul>
- <li><p>Define a MIME's JavaScript API in full detail. Add a new <code><a interface>MIME</a></code>
+ <li><p>Define a MIME's JavaScript API in full detail. Add a new <code><a interface>MIMEType</a></code>
  object as well for MIME manipulation.
 </ul>
 
@@ -74,26 +74,27 @@ might increase in scope somewhat.-->
 <h2 id=api>API</h2>
 
 
-<h3 id=mime-class>MIME class</h3>
+<h3 id=mime-class>MIMEType class</h3>
 
 <pre class=idl>
 [Constructor(USVString mime),
  Exposed=(Window,Worker)]
-interface MIME {
+interface MIMEType {
            attribute USVString type;
            attribute USVString subtype;
+           attribute USVString essence;
   [SameObject] readonly attribute MIMEParams params;
 
   stringifier USVString toJSON();
 };
 </pre>
 
-<p>A {{MIME}} object has an associated <dfn export for="MIME">mime</dfn> that is a <a>MIME type</a> and <dfn export for="MIME">parameters</dfn> that is a
+<p>A {{MIMEType}} object has an associated <dfn export for="MIMEType">mime</dfn> that is a <a>MIME</a> and <dfn export for="MIMEType">parameters</dfn> that is a
 {{MIMEParams}} object.
 
 <hr>
 
-<p id=constructors>The <dfn constructor for=MIME><code>MIME(<var>mime</var>)</code></dfn> constructor, when invoked, must run these steps:
+<p id=constructors>The <dfn constructor for=MIMEType><code>MIMEType(<var>mime</var>)</code></dfn> constructor, when invoked, must run these steps:
 
 <ol>
  <li><p>Let <var>mimeType</var> be null.
@@ -105,79 +106,80 @@ interface MIME {
 
  <li><p>Let <var>params</var> be <var>mimeType</var>'s <a for="MIME type">parameters</a>.
 
- <li><p>Let <var>result</var> be a new {{MIME}} object.
+ <li><p>Let <var>result</var> be a new {{MIMEType}} object.
 
- <li><p>Set <var>result</var>'s <a for=MIME>mime</a> to <var>mimeType</var>.
+ <li><p>Set <var>result</var>'s <a for=MIMEType>mime</a> to <var>mimeType</var>.
 
- <li><p>Set <var>result</var>'s <a for=MIME lt="parameters">parameters object</a> to a
- <a for=MIMEParams lt=new>new MIMEParams</a>, and then set that <a for=MIME lt="parameters">parameters object</a>'s
+ <li><p>Set <var>result</var>'s <a for=MIMEType lt="parameters">parameters object</a> to a
+ <a for=MIMEParams lt=new>new MIMEParams</a>, and then set that <a for=MIMEType lt="parameters">parameters object</a>'s
  <a for=MIMEParams lt="parameters">parameters object</a> to <var>params</var>.
 
  <li><p>Return <var>result</var>.
 </ol>
 
 <div class="example no-backref">
- <p>To <a lt="">parse</a> a string into a <a>MIME</a>, invoke the {{MIME}} constructor with a single argument:
+ <p>To <a lt="">parse</a> a string into a <a>MIME</a>, invoke the {{MIMEType}} constructor with a single argument:
 
  <pre><code class="lang-javascript">
 var input = "text/javascript; charset=utf-8;",
-    mime = new MIME(input)
+    mime = new MIMEType(input)
 mime.subtype // "javascript"</code></pre>
 
  <p>This throws an exception if the input is not a valid MIME:
 
  <pre><code class="lang-javascript">
 try {
-  var mime = new MIME("/")
+  var mime = new MIMEType("/")
 } catch(e) {
   // that happened
 }</code></pre>
 
- <p>A {{MIME}} object can be used as input (while IDL requires a string as argument, a
- {{MIME}} object stringifies to its serialized form):</p>
+ <p>A {{MIMEType}} object can be used as input (while IDL requires a string as argument, a
+ {{MIMEType}} object stringifies to its serialized form):</p>
 
  <pre><code class="lang-javascript">
-var mime = new MIME(new MIME("text/plain"))
+var mime = new MIMEType(new MIMEType("text/plain"))
 mime.type // "text"</code></pre>
 </div>
 
 <hr id=mimeutils-members>
 
-<p>The <dfn attribute for=MIME><code>href</code></dfn> attribute's getter and the
-<dfn method for="MIME"><code>toJSON()</code></dfn> method, when invoked, must return the
-<a>serialize a mime type</a> algorithm on <a>context object</a>'s <a for=MIME>mime</a>.
+<p>The <dfn attribute for=MIMEType><code>href</code></dfn> attribute's getter and the
+<dfn method for="MIMEType"><code>toJSON()</code></dfn> method, when invoked, must return the
+<a>serialize a mime type</a> algorithm on <a>context object</a>'s <a for=MIMEType>mime</a>.
 
-<p>The <dfn attribute for=MIME><code>type</code></dfn> attribute's getter must run these steps:
-
-  <ol>
-    <li><p>Return <a>context object</a>'s <a for=MIME>mime</a>'s <a for="MIME type">type</a>.
-  </ol>
-
-<p>The <code><a attribute for=MIME>type</a></code> attribute's setter must run these steps:
-
-<ol>
- <li><p><a>set the type</a> given <a>context object</a>'s <a for=MIME>mime</a> and the given value.
-</ol>
-
-<p>The <dfn attribute for=MIME><code>subtype</code></dfn> attribute's getter must run these steps:
+<p>The <dfn attribute for=MIMEType><code>type</code></dfn> attribute's getter must run these steps:
 
   <ol>
-    <li><p>Return <a>context object</a>'s <a for=MIME>mime</a>'s <a for="MIME type">subtype</a>.
+    <li><p>Return <a>context object</a>'s <a for=MIMEType>mime</a>'s <a for="MIME type">type</a>.
   </ol>
 
-<p>The <code><a attribute for=MIME>subtype</a></code> attribute's setter must run these steps:
+<p>The <code><a attribute for=MIMEType>type</a></code> attribute's setter must run these steps:
 
 <ol>
- <li><p><a>set the subtype</a> given <a>context object</a>'s <a for=MIME>mime</a> and the given value.
+ <li><p><a>set the type</a> given <a>context object</a>'s <a for=MIMEType>mime</a> and the given value.
 </ol>
 
-<p>The <dfn attribute for=MIME><code>params</code></dfn> attribute's getter must return
-<a>context object</a>'s <a for=MIME lt="parameters">parameters object</a>.
+<p>The <dfn attribute for=MIMEType><code>subtype</code></dfn> attribute's getter must run these steps:
+
+  <ol>
+    <li><p>Return <a>context object</a>'s <a for=MIMEType>mime</a>'s <a for="MIME type">subtype</a>.
+  </ol>
+
+<p>The <code><a attribute for=MIMEType>subtype</a></code> attribute's setter must run these steps:
+
+<ol>
+ <li><p><a>set the subtype</a> given <a>context object</a>'s <a for=MIMEType>mime</a> and the given value.
+</ol>
+
+<p>The <dfn attribute for=MIMEType><code>params</code></dfn> attribute's getter must return
+<a>context object</a>'s <a for=MIMEType lt="parameters">parameters object</a>.
 
 <h3 id=interface-mimeparams>MIMEParams class</h3>
 
 <pre class=idl>
-[Exposed=(Window,Worker)]
+[Constructor(),
+ Exposed=(Window,Worker)]
 interface MIMEParams {
   void delete(USVString name);
   USVString? get(USVString name);
@@ -189,18 +191,22 @@ interface MIMEParams {
 </pre>
 
 <p>A {{MIMEParams}} object has an associated
-<a for="MIME type">parameters</a> object <dfn for=MIMEParams>parameters</dfn>,
+<a for="MIME">parameters</a> object <dfn for=MIMEParams>parameters</dfn>,
 which is initially null.
 
-<p>To create a <dfn export for=MIMEParams id=concept-mimeparams-new>new</dfn>
-{{MIMEParams}} object using <var>init</var>, run these steps:
+<p>To <dfn export for=MIMEParams id=concept-mimeparams-new>create a new MIMEParams object</dfn> using <var>init</var>, run these steps:
 
 <ol>
  <li><p>Let <var>params</var> be a new {{MIMEParams}} object.
 
- <li><p>If <var>init</var> is not a mime record's <a for="MIME type">parameters</a> object, then <a>throw</a> a {{TypeError}}.
-
  <li><p>Return <var>params</var>.
+</ol>
+
+
+<p id=constructors>The <dfn constructor for=MIMEParams><code>MIMEParams()</code></dfn> constructor, when invoked, must run these steps:
+
+<ol>
+ <li><p>Return the result of running create a new MIMEParams object.
 </ol>
 
 <p>The <dfn method for=MIMEParams><code>delete(<var>name</var>)</code></dfn> method, when
@@ -225,7 +231,7 @@ in <a for=MIMEParams>parameters</a>, and false otherwise.
 
 <p>The
 <dfn method for=MIMEParams><code>set(<var>name</var>, <var>value</var>)</code></dfn>
-method, when invoked, must return the result of performing <a>set a parameter</a> given <a for="MIME type">parameters</a>, <var>name</var>, and <var>value</var>
+method, when invoked, must return the result of performing <a>set a parameter</a> given <a for="MIMEType type">parameters</a>, <var>name</var>, and <var>value</var>
 
 <hr>
 
@@ -233,8 +239,8 @@ method, when invoked, must return the result of performing <a>set a parameter</a
 
 <p>A standard that exposes <a lt="MIME">MIMEs</a>, should expose the <a>MIME</a> as a string (by
 running <a>serialize a mime type</a> for an internal <a lt="MIME">MIME's</a> mime). A standard should not expose a
-<a>MIME</a> using a {{MIME}} object. {{MIME}} objects are meant for <a>MIME</a>
-manipulation. In IDL the USVString type should be used.
+<a>MIME</a> using a {{MIMEType}} object. {{MIMEType}} objects are meant for <a>MIME</a>
+manipulation and reflection. In IDL the USVString type should be used.
 
 <p class=note>The higher-level notion here is that values are to be exposed as immutable data
 structures.
